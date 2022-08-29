@@ -1,1 +1,55 @@
-<p>usuario-detail works!</p>
+<div class="container" *ngIf="user">
+  <div class="card">
+    <div class="card-header">
+      {{user.login}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{user.nome}}</h5>
+      <a (click)="onModalView = true" class="btn btn-primary">Edit</a>
+
+    </div>
+    <!-- Button trigger modal -->
+
+  </div>
+
+  <div *ngIf="mesage" class="alert alert-success" role="alert">
+    {{mesage}}
+  </div>
+</div>
+<hr>
+
+<div class="container" *ngIf="onModalView">
+
+
+  <div class="card" >
+    
+    <a (click)="onSubmitEditUser()"  class="btn btn-success" >Send Edit</a>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <input (ngModelChange)="onValidationForm()" class="form-control" type="text" placeholder="Name" [(ngModel)]="userEdit.nome" >
+        <small *ngIf="userMensageError.nome" style="color: red;"> {{userMensageError.nome}} </small>
+        
+      </li>
+      <li class="list-group-item">
+        <input (ngModelChange)="onValidationForm()" class="form-control" type="text" placeholder="Login" [(ngModel)]="userEdit.login" >
+        <small *ngIf="userMensageError.login" style="color: red;"> {{userMensageError.login}} </small>
+      </li> 
+      <li class="list-group-item">
+        <input (ngModelChange)="onValidationForm()" class="form-control" type="text" placeholder="Senha antiga" [(ngModel)]="userEdit.senha" >
+        <small *ngIf="userMensageError.senha" style="color: red;"> {{userMensageError.senha}} </small>
+      </li>
+      <li class="list-group-item">
+        <input (ngModelChange)="onValidationForm()" class="form-control" type="text" placeholder="Senha" [(ngModel)]="userEdit.novaSenha" >
+        <small *ngIf="userMensageError.novaSenha" style="color: red;"> {{userMensageError.novaSenha}} </small>
+      </li>
+      <li class="list-group-item">
+        <input (ngModelChange)="onValidationForm()" class="form-control" type="text" placeholder="Confirme Senha" [(ngModel)]="userEdit.confirmSenha" >
+        <small *ngIf="userMensageError.confirmSenha" style="color: red;"> {{userMensageError.confirmSenha}} </small>
+      </li>
+    </ul>
+    <div class="card-footer">
+      <a (click)="onCancelEdit()" class="btn btn-danger">Cancel Edit</a>
+    </div>
+  </div>
+
+</div>

@@ -11,15 +11,29 @@ import { environment } from 'src/environments/environment';
 export class ListUsuariosComponent implements OnInit {
 
 
-  usuarios: Usuario[] = []
+  usuarios: Usuario[] =  [ ]
+
+  userDeletado!: Usuario;
 
   constructor(private service: UserService) { }
 
   ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+  load() {
+    location.reload()
+  }
+
+  getAllUsers(): void {
     this.service.getUsers().subscribe((users) => {
       this.usuarios = users
     })
   }
- 
 
+  onDeleteUser(id: number): void{
+    this.service.deleteUser(id).subscribe((user) => {this.userDeletado = user; console.log("deletado");})
+    this.getAllUsers();
+    this.load();
+  }
 }

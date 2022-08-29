@@ -1,1 +1,14 @@
-<p *ngFor="let user of usuarios" >{{user.login}}</p>
+<div class="container-fluid bg-light">
+  <div class="row justify-content-center">
+    <div *ngIf="usuarios" class="col-4">
+      <div *ngFor="let user of usuarios" class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.login }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{user.nome}}</h6>
+          <a class="btn btn-success" routerLink="/usuarios/{{user.id}}">Details</a>
+          <button class="btn btn-danger" (click)="onDeleteUser(user.id)"> Delete </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  margin: 0px;
+  padding: 0px;
+  grid-template-rows: 2fr 96fr 2fr;
+  grid-template-areas: "h h h"
+                       "a m m"
+                       "f f f"
+}

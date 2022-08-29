@@ -65,10 +65,17 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "frontMyApi:build:production"
+              "browserTarget": "frontMyApi:build:production",
+              "proxyConfig": "proxy.conf.json"
+              
             },
             "development": {
-              "browserTarget": "frontMyApi:build:development"
+              "browserTarget": "frontMyApi:build:development" 
+              
+            },
+            "options": {
+              "browserTarget": "frontMyApi:build",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
